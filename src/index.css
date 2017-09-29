@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#container form {
+	margin: 40px auto;
+}
+
+#datatable {
+	margin-left: 10px;
+}
+
+#datatable .symbolrow {
+	font-weight: bold;
+}
+
+.alert-message {
+	margin-left: 20px;
+	margin-right: 20px;
+}
