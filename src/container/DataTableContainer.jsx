@@ -3,9 +3,9 @@ import { symbolChanged, fetchSuccess } from './Actions'
 import DataTableForm from '../component/DataTableForm'
 
 const reduceByBar = (arr) => {
-	if (arr.length == 0) {
+	if (arr.length === 0) {
 		return '-';
-	} else if (arr.length == 1) {
+	} else if (arr.length === 1) {
 		return arr[0];
 	} else {
 		return arr.reduce((x, y) => x == null ? y : (x + ' | ' + y));
@@ -63,7 +63,8 @@ const mapRawDataToTableData = rawData => {
 
 const mapStateToProps = state => {
 	return {
-		...state,
+		prevState: state.prevState,
+		rawData: state.rawData,
 		tableData: mapRawDataToTableData(state.rawData)
 	}
 }
@@ -72,7 +73,7 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onSymbolChange: (symbol, termLen) => {
 			dispatch(symbolChanged(symbol, termLen, (rawData) => {
-				dispatch(fetchSuccess(rawData))
+				dispatch(fetchSuccess({ symbol, termLen }, rawData))
 			}));
 		}
 	}

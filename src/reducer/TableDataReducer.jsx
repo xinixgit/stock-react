@@ -16,6 +16,7 @@ const TableDataState = (state, action) => {
 
 		case 'FETCH_SUCCESS':
 			return {
+				prevState: action.prevState,
 				rawData: action.rawData
 			}
 

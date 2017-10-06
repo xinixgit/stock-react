@@ -5,7 +5,8 @@ export const symbolChanged = (symbol, termLen, callback) => ({
 	callback
 })
 
-export const fetchSuccess = (rawData) => ({
+export const fetchSuccess = (prevState, rawData) => ({
 	type: 'FETCH_SUCCESS',
+	prevState,
 	rawData
 })

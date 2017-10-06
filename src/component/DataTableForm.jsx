@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, FormControl, Col, ControlLabel, Radio, Button, Alert, Well } from 'react-bootstrap'
+import { Form, FormGroup, FormControl, Col, ControlLabel, Radio, Button, Alert } from 'react-bootstrap'
 
 import DataTable from './DataTable'
 
@@ -27,16 +27,20 @@ class DataTableForm extends Component {
 	}
 
 	render() {
-		let symbolInput, termLength;
-		const { tableData, rawData } = this.props;
-		console.log(this.props);
-		console.log(this.state);
+		let symbolInput, termLength, prevSymbol, prevTermLen;
+		const { prevState, tableData, rawData } = this.props;
+
+		if (prevState) {
+			prevSymbol = prevState.symbol;
+			prevTermLen = prevState.termLen;
+		}
+
 		return (
 			<div id="container">
 				<Form horizontal
 					onSubmit={ e => {
 						e.preventDefault();
-						this.handleFormSubmit(symbolInput.value, termLength);
+						this.handleFormSubmit(symbolInput.value || prevSymbol, termLength || prevTermLen);
 					}}
 				>
 					<FormGroup controlId="formSymbol">
